@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/navigation"
+  app:startDestination="@id/qiitaArticleListFragment">
+
+  <fragment
+    android:id="@+id/qiitaArticleListFragment"
+    android:name="com.example.seedproject.ui.qiita.QiitaArticleListFragment"
+    android:label="qiita_article_list_fragment"
+    tools:layout="@layout/qiita_article_list_fragment" />
+</navigation>
