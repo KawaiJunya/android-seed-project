@@ -11,15 +11,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class QiitaArticleListViewModel internal constructor(
+class QiitaArticleListViewModelFactory : ViewModel() {
 
-): ViewModel() {
-
+  // The internal MutableLiveData String that stores the most recent response
   private val _response = MutableLiveData<List<QiitaArticle>>()
+
+  // The external immutable LiveData for the response String
   val qiitaArticle: LiveData<List<QiitaArticle>>
     get() = _response
 
-  private val viewModelJob   = Job()
+  // Create a Coroutine scope using a job to be able to cancel when needed
+  private var viewModelJob = Job()
+
+  // the Coroutine runs using the Main (UI) dispatcher
   private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
 
   fun getQiitaItems() {
